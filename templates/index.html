@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <title>
+            {{title}}
+        </title>
+    </head>
+    <body>
+        <h1>
+            {{content}}
+            {% for n in list %}
+            <div>{{n}}</div>
+            {% endfor %}
+        </h1>
+
+        <table border="1" style="height:200px;width:300px">
+            <tr>
+                <th>name</th>
+                <th>ph number</th>
+            </tr>
+            {% for n in dic %}
+            <tr>
+                <td>{{n.name}}</td>
+                <td>{{n.no}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% for n in numbers %}
+            {% if n > 3 %}
+                <div><h1>{{n}}</h1></div>
+            {% endif %}
+        {% endfor%}
+        <hr>
+        {% if latest_question_list %}
+            <ul>
+                {% for question in latest_question_list %}
+                <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+        <hr>
+        {{ question }}
+    </body>
+</html>
